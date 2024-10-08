@@ -1,0 +1,18 @@
+datadog:
+  site: datadoghq.com
+  apiKeyExistingSecret: datadog-secret
+  tags:
+    - env:minkube
+    - owner:petems
+  # datadog.kubelet.tlsVerify should be `false` on kind and minikube
+  # to establish communication with the kubelet
+  kubelet:
+    tlsVerify: "false"
+  apm:
+    instrumentation:
+      enabled: true
+      libVersions:
+        java: v1.31.2
+  logs:
+    enabled: true
+    containerCollectAll: true
